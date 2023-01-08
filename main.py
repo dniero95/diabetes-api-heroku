@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pickle as pk
 import json
+import uvicorn
 
 app = FastAPI()
 
@@ -65,7 +66,8 @@ def diabetes_pred(input_parameters:model_input):
 
 
 
-
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT", default=5000), log_level="info")
 
 
 
